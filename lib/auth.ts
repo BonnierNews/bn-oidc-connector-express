@@ -12,7 +12,7 @@ import { oidcContext, idToken } from "./middleware";
  * the decoded claims to the request object.
  */
 function auth(options?: AuthOptions): Router {
-  const userHeader = options?.headers?.user ?? "x-bnlogin-user";
+  const userHeader = (options?.headers?.user ?? "x-bnlogin-user").toLowerCase();
   const router = createRouter();
 
   router.use(oidcContext);

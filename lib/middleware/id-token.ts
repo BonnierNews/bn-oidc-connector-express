@@ -10,12 +10,22 @@ function idToken(userHeader: string) {
       return;
     }
 
-    const decodedClaims = JSON.parse(req.headers[userHeader] as string);
+    try {
+      const decodedClaims = JSON.parse(req.headers[userHeader] as string);
 
-    req.oidc.idTokenClaims = decodedClaims;
-    req.oidc.isAuthenticated = true;
+      if (!decodedClaims.sub) {
+        next();
 
-    attachUserToContext(req, decodedClaims);
+        return;
+      }
+
+      req.oidc.idTokenClaims = decodedClaims;
+      req.oidc.isAuthenticated = true;
+
+      attachUserToContext(req, decodedClaims);
+    } catch {
+      // Do nothing if parsing fails
+    }
 
     next();
   };
