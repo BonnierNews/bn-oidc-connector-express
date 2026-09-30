@@ -1,5 +1,10 @@
 # @bonniernews/bn-oidc-connector-express
 
+> [!WARNING]
+> **Deprecated — no longer maintained.** This package will not receive further updates and the repository is archived.
+>
+> Bonnier News applications should use the Fastly Compute OIDC connector instead: [BonnierNews/bn-oidc-connector-fastly-ts](https://github.com/BonnierNews/bn-oidc-connector-fastly-ts) (internal).
+
 Express middleware for handling user authentication from Bonnier News Fastly Compute OIDC headers.
 
 ## Overview
